@@ -1,0 +1,36 @@
+# Doc
+*.rtf
+*.txt
+
+# Data
+*.zip
+*.tar
+
+*.csv
+*.arff
+*.xls
+*.xlsx
+
+# Model
+*.pth
+
+# Img
+*.png
+*.jpg
+*.jpeg
+*.heic
+
+# Audio
+*.wav
+*.mp3
+*.midi
+
+# Video
+*.mp4
+*.mov
+*.wmw
+*.avi
+*.avchd
+*.mkv
+
+!template/
