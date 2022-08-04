@@ -1,6 +1,7 @@
 # Doc
 *.rtf
 *.txt
+*.pdf
 
 # Data
 *.zip
@@ -33,4 +34,4 @@
 *.avchd
 *.mkv
 
-!template/
+!template/*
