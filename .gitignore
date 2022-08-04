@@ -34,4 +34,6 @@
 *.avchd
 *.mkv
 
+*.DS_Store
+
 !template/*
