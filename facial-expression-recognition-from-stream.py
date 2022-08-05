@@ -6,14 +6,14 @@ import tensorflow
 #-----------------------------
 #opencv initialization
 
-face_cascade = cv2.CascadeClassifier('../haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 cap = cv2.VideoCapture(0)
 #-----------------------------
 #face expression recognizer initialization
 from keras.models import model_from_json
-model = model_from_json(open("../model/facial_expression_model_structure.json", "r").read())
-model.load_weights('../model/facial_expression_model_weights.h5') #load weights
+model = model_from_json(open("model/facial_expression_model_structure.json", "r").read())
+model.load_weights('model/facial_expression_model_weights.h5') #load weights
 
 #-----------------------------
 
@@ -44,9 +44,11 @@ while(True):
 		predictions = model.predict(img_pixels) #store probabilities of 7 expressions
 		
 		#find max indexed array 0: angry, 1:disgust, 2:fear, 3:happy, 4:sad, 5:surprise, 6:neutral
-		max_index = np.argmax(predictions[0])
+		# max_index = np.argmax(predictions[0])
+		index = predictions[0]
 		
-		emotion = emotions[max_index]
+		# emotion = emotions[max_index]
+		emotion = emotions[index]
 		
 		#write emotion text above rectangle
 		cv2.putText(img, emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
