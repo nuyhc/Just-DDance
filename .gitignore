@@ -11,15 +11,16 @@
 *.arff
 *.xls
 *.xlsx
+*.json
 
 # Model
-*.pth
 
 # Img
 *.png
 *.jpg
 *.jpeg
 *.heic
+*.gif
 
 # Audio
 *.wav
