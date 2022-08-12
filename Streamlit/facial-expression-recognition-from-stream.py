@@ -12,8 +12,8 @@ cap = cv2.VideoCapture(0)
 #-----------------------------
 #face expression recognizer initialization
 from keras.models import model_from_json
-model = model_from_json(open("model/facial_expression_model_structure.json", "r").read())
-model.load_weights('model/facial_expression_model_weights.h5') #load weights
+model = model_from_json(open("../model/facial_expression_model_structure.json", "r").read())
+model.load_weights('../model/facial_expression_model_weights.h5') #load weights
 
 #-----------------------------
 
@@ -51,9 +51,9 @@ while(True):
 		# emotion = emotions[index]
 		
 		#write emotion text above rectangle
-		# cv2.putText(img, emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
-		for i in range(len(emotions)):
-			cv2.putText(img, emotions[i] + " " + str(predictions[0][i]), (int(x+w), int(y)+40*i), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+		cv2.putText(img, emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+		# for i in range(len(emotions)):
+		# 	cv2.putText(img, emotions[i] + " " + str(predictions[0][i]), (int(x+w), int(y)+40*i), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
 	
 		
 		#process on detected face end
