@@ -38,3 +38,4 @@
 *.DS_Store
 
 !template/*
+!dataset/*
