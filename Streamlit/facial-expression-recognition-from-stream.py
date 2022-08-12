@@ -12,12 +12,13 @@ cap = cv2.VideoCapture(0)
 #-----------------------------
 #face expression recognizer initialization
 from keras.models import model_from_json
-model = model_from_json(open("model/facial_expression_model_structure.json", "r").read())
-model.load_weights('model/facial_expression_model_weights.h5') #load weights
+model = model_from_json(open("../model/facial_expression_model_structure.json", "r").read())
+model.load_weights('../model/facial_expression_model_weights.h5') #load weights
 
 #-----------------------------
 
 emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
+description = ('Are you angry? You can do it!', '할 수 있어요!', '힘내세요!', '잘 하고 계시는군요!', '슬퍼하지 마세요! 함께 해봐요!', '너무 어려운가요?', '함께 해봐요!')
 
 while(True):
 	ret, img = cap.read()
@@ -44,14 +45,17 @@ while(True):
 		predictions = model.predict(img_pixels) #store probabilities of 7 expressions
 		
 		#find max indexed array 0: angry, 1:disgust, 2:fear, 3:happy, 4:sad, 5:surprise, 6:neutral
-		# max_index = np.argmax(predictions[0])
-		index = predictions[0]
+		max_index = np.argmax(predictions[0])
+		# index = predictions[0]
 		
-		# emotion = emotions[max_index]
-		emotion = emotions[index]
+		emotion = description[max_index]
+		# emotion = emotions[index]
 		
 		#write emotion text above rectangle
 		cv2.putText(img, emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+		# for i in range(len(emotions)):
+		# 	cv2.putText(img, emotions[i] + " " + str(predictions[0][i]), (int(x+w), int(y)+40*i), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
+	
 		
 		#process on detected face end
 		#-------------------------
