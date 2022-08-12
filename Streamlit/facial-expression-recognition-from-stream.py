@@ -18,6 +18,7 @@ model.load_weights('../model/facial_expression_model_weights.h5') #load weights
 #-----------------------------
 
 emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
+description = ('Are you angry? You can do it!', '할 수 있어요!', '힘내세요!', '잘 하고 계시는군요!', '슬퍼하지 마세요! 함께 해봐요!', '너무 어려운가요?', '함께 해봐요!')
 
 while(True):
 	ret, img = cap.read()
@@ -47,7 +48,7 @@ while(True):
 		max_index = np.argmax(predictions[0])
 		# index = predictions[0]
 		
-		emotion = emotions[max_index]
+		emotion = description[max_index]
 		# emotion = emotions[index]
 		
 		#write emotion text above rectangle
